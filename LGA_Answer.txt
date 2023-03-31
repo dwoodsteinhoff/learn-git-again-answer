@@ -1,0 +1,133 @@
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo$ mkdir lear_git_again
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo$ ls
+lear_git_again  repository_git
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo$ mv lear_git_again/ learn_git_again
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo$ ls
+learn_git_again  repository_git
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo$ cd learn_git_again/
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ touch third.txt
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ ls
+third.txt
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/darewood/Code/git_Demo/learn_git_again/.git/
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git add third.txt
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   third.txt
+
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git commit -m "adding third.txt"
+[master (root-commit) 02cba55] adding third.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 third.txt
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git log
+commit 02cba55396aace60621f72d3fe9e04b4d735ef99 (HEAD -> master)
+Author: Luke <luke.steinhoff95@gmail.com>
+Date:   Thu Mar 30 20:59:55 2023 -0400
+
+    adding third.txt
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ touch fourth.txt
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git add fourth.txt
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   fourth.txt
+
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git commit -m "adding fourth.txt"
+[master 543f965] adding fourth.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 fourth.txt
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ rm third.txt
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git add .
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    third.txt
+
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git commit -m "removing third.txt"
+[master a82ed8e] removing third.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 third.txt
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git log
+commit a82ed8e5bace1ca9149916bfc344768dc3077696 (HEAD -> master)
+Author: Luke <luke.steinhoff95@gmail.com>
+Date:   Thu Mar 30 21:01:30 2023 -0400
+
+    removing third.txt
+
+commit 543f96587c165b3d412c90f88cf9b279fd13ffa0
+Author: Luke <luke.steinhoff95@gmail.com>
+Date:   Thu Mar 30 21:00:42 2023 -0400
+
+    adding fourth.txt
+
+commit 02cba55396aace60621f72d3fe9e04b4d735ef99
+Author: Luke <luke.steinhoff95@gmail.com>
+Date:   Thu Mar 30 20:59:55 2023 -0400
+
+    adding third.txt
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git config --global core.pager "cat"
+darewood@DESKTOP-IJFC8JC:~/Code/git_Demo/learn_git_again$ git config --global
+usage: git config [<options>]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    --worktree            use per-worktree config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+Action
+    --get                 get value: name [value-pattern]
+    --get-all             get all values: key [value-pattern]
+    --get-regexp          get values for regexp: name-regex [value-pattern]
+    --get-urlmatch        get value specific for the URL: section[.var] URL
+    --replace-all         replace all matching variables: name value [value-pattern]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [value-pattern]
+    --unset-all           remove all matches: name [value-pattern]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    --fixed-value         use string equality when comparing values to 'value-pattern'
+    -e, --edit            open an editor
+    --get-color           find the color configured: slot [default]
+    --get-colorbool       find the color setting: slot [stdout-is-tty]
+
+Type
+    -t, --type <>         value is given this type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --bool-or-str         value is --bool or string
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    -z, --null            terminate values with NUL byte
+    --name-only           show variable names only
+    --includes            respect include directives on lookup
+    --show-origin         show origin of config (file, standard input, blob, command line)
+    --show-scope          show scope of config (worktree, local, global, system, command)
+    --default <value>     with --get, use default value when missing entry
+darewood@DESKTOP-IJFC8JC:~$ git config --global --list
+user.email=luke.steinhoff95@gmail.com
+user.name=Luke
+core.pager=cat
